@@ -5,6 +5,8 @@ Network reliability becomes increasingly important in modern data center network
 ## System
 The system includes six modules: `bmv2_model`, `controller`, `flow_table`, `p4_source_code`, `packet`, `topology`.
 
+****
+
 ### bmv2_model
 The bmv2 target used in the network. 
 #### simple_switch
@@ -23,12 +25,16 @@ The output of compiling `my_int.p4`.
 #### Others
 Not used.
 
+****
+
 ### topology
 Create the virtual network.
 #### clos.py
 Create the clos architecture network with customied scale.
 #### p4_mininet.py
 The reference for adding P4 switches into the network.
+
+****
 
 ### flow_table
 Include the flow tables, flow table generator.
@@ -40,6 +46,8 @@ Generate the flow tables for customized clos architecture topology. And the outp
 Dump the flow tables into the P4 switches.
 #### simple_switch_CLI
 The control plane of simple switches.
+
+****
 
 ### packet
 Include the packet sending and receiving scripts.
@@ -55,6 +63,8 @@ Parse the packets.
 Receive all packets and use `parse.py` to parse the packets. And store the INT information into the database.
 #### processor.py
 Not used.
+
+****
 
 ### controller
 The source code of the controller.
