@@ -40,11 +40,11 @@ The reference for adding P4 switches into the network.
 Include the flow tables, flow table generator.
 #### ./flow_table
 The flow tables.
-#### flow_table_gen.py
+#### ./flow_table/flow_table_gen.py
 Generate the flow tables for customized clos architecture topology. And the output files will be in `flow_table`.
-#### command.sh
+#### ./flow_table/command.sh
 Dump the flow tables into the P4 switches.
-#### simple_switch_CLI
+#### ./flow_table/simple_switch_CLI
 The control plane of simple switches.
 
 ****
@@ -52,16 +52,16 @@ The control plane of simple switches.
 ### packet
 Include the packet sending and receiving scripts.
 #### ./send
-#### send_int_probe.py
+#### ./send/send_int_probe.py
 Send int probes.
-#### send_udp.py
+#### ./send/send_udp.py
 Send data packets.
 #### ./receive
-#### parse.py
+#### ./receive/parse.py
 Parse the packets.
-#### receive.py
+#### ./receive/receive.py
 Receive all packets and use `parse.py` to parse the packets. And store the INT information into the database.
-#### processor.py
+#### ./receive/processor.py
 Not used.
 
 ****
