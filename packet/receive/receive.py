@@ -26,8 +26,9 @@ class receive():
                 fmt=[src_ip,rs[0],rs[1]]+map(str,rs[2])
                 key="+".join(fmt)
                 value=rs[3]
+		print(key,value)
                 r.set(key,value)
-                #r.pexpire(key,1000)
+                r.pexpire(key,3000)
         s.close()
 
 

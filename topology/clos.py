@@ -8,18 +8,18 @@ import argparse
 import time
 import os
 
-os.system("sudo rm /home/poi/Desktop/P4_INT_Ver4/controller/tmp/*")
+os.system("sudo rm ../controller/tmp/*")
 os.system("sudo mn -c")
 
 parser = argparse.ArgumentParser(description='CLOS architecture topology')
 parser.add_argument('--behavioral-exe', help='Path to behavioral executable',
-                    type=str, action="store", default="/home/poi/Desktop/P4_INT_Ver4/bmv2_model/simple_switch")
+                    type=str, action="store", default="../bmv2_model/simple_switch")
 parser.add_argument('--thrift-port', help='Thrift server port for table updates',
                     type=int, action="store", default=9090)
 parser.add_argument('--json', help='Path to JSON config file',
-                    type=str, action="store", default="/home/poi/Desktop/P4_INT_Ver4/p4_source_code/my_int.json")
+                    type=str, action="store", default="../p4_source_code/my_int.json")
 parser.add_argument('--nodes-list', help='Number of spine, leaf, tor, host, pod',
-                    nargs='*', default=[0,0,1,2,1])
+                    nargs='*', default=[2,2,2,2,2])
 parser.add_argument('--pcap-dump', help='Dump packets on interfaces to pcap files',
                     type=str, action="store", required=False, default=False)
 args = parser.parse_args()
@@ -126,41 +126,14 @@ def main():
 
     net.start()
 
-    os.system("sh /home/poi/Desktop/P4_INT_Ver4/flow_table/command.sh")
-
-    #for h_name in topo.h_list:
-	#h = net.get(h_name)
-        #h.describe()
-        #h.setDefaultRoute("dev eth0")
-    # h.cmd("sysctl -w net.ipv6.conf.all.disable_ipv6=1")
-    # h.cmd("sysctl -w net.ipv6.conf.default.disable_ipv6=1")
-    # h.cmd("sysctl -w net.ipv6.conf.lo.disable_ipv6=1")
-    #h.cmd("python /home/poi/Desktop/P4_INT_Ver2/packet/receive/receive.py >/dev/null &")
-    #h.cmd("python /home/poi/Desktop/P4_INT_Ver2/packet/send/send_int_probe.py >/dev/null &")
-
+    os.system("sh ../flow_table/command.sh")
 
     for i in xrange(nodes_list[4]):
         for j in xrange(nodes_list[2]):
             for k in xrange(nodes_list[3]):
                 h=net.get(topo.h_list[i][j][k])
-                #h.cmd("python /home/poi/Desktop/P4_INT_Ver4/packet/receive/receive.py >/dev/null &")
-                h.cmd("python /home/poi/Desktop/P4_INT_Ver4/packet/send/send_int_probe.py >/dev/null &")
-    #            h.cmd("python /home/poi/Desktop/P4_INT_Ver4/controller/host.py >/dev/null &")
-
-    #time.sleep(5)
-
-    #for i in xrange(nodes_list[4]):
-        #for j in xrange(nodes_list[2]):
-            #for k in xrange(nodes_list[3]):
-                #h=net.get(topo.h_list[i][j][k])
-                #h.cmd("python /home/poi/Desktop/P4_INT_Ver4/packet/send/send_udp.py >/dev/null &")
-
-
-    # time.sleep(10)
-
-    # for h_name in topo.h_list:
-    #     h = net.get(h_name)
-    #     h.cmd("python /home/poi/Desktop/P4_INT_Ver2/packet/send/send_udp.py >/dev/null &")
+                h.cmd("python ../packet/receive/receive.py >/dev/null &")
+                h.cmd("python ../packet/send/send_int_probe.py >/dev/null &")
 
     CLI(net)
     net.stop()

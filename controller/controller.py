@@ -11,7 +11,7 @@ while(True):
         data=message['data']
         if(data!=1):
             port_list=data.split("+")[3:]
-            print(port_list)
+            # print(port_list)
             if error==None:
                 error=port_list
             else:

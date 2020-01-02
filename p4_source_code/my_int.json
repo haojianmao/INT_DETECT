@@ -64,15 +64,7 @@
         ["sw_id", 8, false],
         ["ingress_port", 8, false],
         ["egress_port", 8, false],
-        ["rsvd0", 8, false],
-        ["ingress_global_timestamp", 48, false],
-        ["egress_global_timestamp", 48, false],
-        ["enq_timestamp", 32, false],
-        ["rsvd1", 8, false],
-        ["enq_qdepth", 24, false],
-        ["deq_timedelta", 32, false],
-        ["rsvd2", 8, false],
-        ["deq_qdepth", 24, false]
+        ["rsvd", 8, false]
       ]
     },
     {
@@ -359,8 +351,8 @@
       "name" : "deparser",
       "id" : 0,
       "source_info" : {
-        "filename" : "./HULA.p4",
-        "line" : 250,
+        "filename" : "./my_int.p4",
+        "line" : 235,
         "column" : 8,
         "source_fragment" : "MyDeparser"
       },
@@ -388,8 +380,8 @@
           "op" : "drop",
           "parameters" : [],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 125,
+            "filename" : "./my_int.p4",
+            "line" : 117,
             "column" : 8,
             "source_fragment" : "mark_to_drop()"
           }
@@ -427,8 +419,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 129,
+            "filename" : "./my_int.p4",
+            "line" : 121,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = (bit<9>)hdr.sr[0].next_port"
           }
@@ -446,8 +438,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 130,
+            "filename" : "./my_int.p4",
+            "line" : 122,
             "column" : 8,
             "source_fragment" : "hdr.sr.pop_front(1)"
           }
@@ -472,8 +464,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 134,
+            "filename" : "./my_int.p4",
+            "line" : 126,
             "column" : 8,
             "source_fragment" : "hdr.type_1.pop_front(1)"
           }
@@ -503,8 +495,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 138,
+            "filename" : "./my_int.p4",
+            "line" : 130,
             "column" : 8,
             "source_fragment" : "standard_metadata.mcast_grp = mcast_grp"
           }
@@ -538,8 +530,8 @@
           "op" : "drop",
           "parameters" : [],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 175,
+            "filename" : "./my_int.p4",
+            "line" : 167,
             "column" : 8,
             "source_fragment" : "mark_to_drop()"
           }
@@ -565,9 +557,9 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 179,
-            "column" : 1,
+            "filename" : "./my_int.p4",
+            "line" : 172,
+            "column" : 8,
             "source_fragment" : "hdr.inthdr.setValid()"
           }
         },
@@ -584,8 +576,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 181,
+            "filename" : "./my_int.p4",
+            "line" : 173,
             "column" : 8,
             "source_fragment" : "hdr.inthdr.sw_id = sw_id"
           }
@@ -616,8 +608,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 182,
+            "filename" : "./my_int.p4",
+            "line" : 174,
             "column" : 8,
             "source_fragment" : "hdr.inthdr.ingress_port=(bit<8>)standard_metadata.egress_port"
           }
@@ -648,150 +640,10 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 183,
+            "filename" : "./my_int.p4",
+            "line" : 175,
             "column" : 8,
             "source_fragment" : "hdr.inthdr.egress_port=(bit<8>)standard_metadata.ingress_port"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["inthdr", "ingress_global_timestamp"]
-            },
-            {
-              "type" : "field",
-              "value" : ["standard_metadata", "ingress_global_timestamp"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 184,
-            "column" : 8,
-            "source_fragment" : "hdr.inthdr.ingress_global_timestamp=(bit<48>)standard_metadata.ingress_global_timestamp"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["inthdr", "egress_global_timestamp"]
-            },
-            {
-              "type" : "field",
-              "value" : ["standard_metadata", "egress_global_timestamp"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 185,
-            "column" : 8,
-            "source_fragment" : "hdr.inthdr.egress_global_timestamp=(bit<48>)standard_metadata.egress_global_timestamp"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["inthdr", "enq_timestamp"]
-            },
-            {
-              "type" : "field",
-              "value" : ["standard_metadata", "enq_timestamp"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 186,
-            "column" : 8,
-            "source_fragment" : "hdr.inthdr.enq_timestamp=(bit<32>)standard_metadata.enq_timestamp"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["inthdr", "enq_qdepth"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["standard_metadata", "enq_qdepth"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0xffffff"
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 187,
-            "column" : 8,
-            "source_fragment" : "hdr.inthdr.enq_qdepth=(bit<24>)standard_metadata.enq_qdepth"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["inthdr", "deq_timedelta"]
-            },
-            {
-              "type" : "field",
-              "value" : ["standard_metadata", "deq_timedelta"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 188,
-            "column" : 8,
-            "source_fragment" : "hdr.inthdr.deq_timedelta=(bit<32>)standard_metadata.deq_timedelta"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["inthdr", "deq_qdepth"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "field",
-                    "value" : ["standard_metadata", "deq_qdepth"]
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0xffffff"
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 189,
-            "column" : 8,
-            "source_fragment" : "hdr.inthdr.deq_qdepth=(bit<24>)standard_metadata.deq_qdepth"
           }
         },
         {
@@ -830,8 +682,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 191,
+            "filename" : "./my_int.p4",
+            "line" : 176,
             "column" : 8,
             "source_fragment" : "hdr.int_option.int_num = hdr.int_option.int_num + 1"
           }
@@ -857,8 +709,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 195,
+            "filename" : "./my_int.p4",
+            "line" : 180,
             "column" : 8,
             "source_fragment" : "hdr.inthdr.setValid()"
           }
@@ -876,8 +728,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 196,
+            "filename" : "./my_int.p4",
+            "line" : 181,
             "column" : 8,
             "source_fragment" : "hdr.inthdr.sw_id = sw_id"
           }
@@ -908,8 +760,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 197,
+            "filename" : "./my_int.p4",
+            "line" : 182,
             "column" : 8,
             "source_fragment" : "hdr.inthdr.ingress_port=(bit<8>)standard_metadata.ingress_port"
           }
@@ -940,8 +792,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 198,
+            "filename" : "./my_int.p4",
+            "line" : 183,
             "column" : 8,
             "source_fragment" : "hdr.inthdr.egress_port = (bit<8>)standard_metadata.egress_port"
           }
@@ -982,8 +834,8 @@
             }
           ],
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 199,
+            "filename" : "./my_int.p4",
+            "line" : 184,
             "column" : 8,
             "source_fragment" : "hdr.int_option.int_num = hdr.int_option.int_num + 1"
           }
@@ -996,8 +848,8 @@
       "name" : "ingress",
       "id" : 0,
       "source_info" : {
-        "filename" : "./HULA.p4",
-        "line" : 121,
+        "filename" : "./my_int.p4",
+        "line" : 113,
         "column" : 8,
         "source_fragment" : "MyIngress"
       },
@@ -1053,8 +905,8 @@
           "name" : "MyIngress.mcast_table",
           "id" : 2,
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 141,
+            "filename" : "./my_int.p4",
+            "line" : 133,
             "column" : 10,
             "source_fragment" : "mcast_table"
           },
@@ -1094,8 +946,8 @@
           "name" : "node_2",
           "id" : 0,
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 155,
+            "filename" : "./my_int.p4",
+            "line" : 147,
             "column" : 11,
             "source_fragment" : "hdr.sr[0].isValid()"
           },
@@ -1117,8 +969,8 @@
           "name" : "node_3",
           "id" : 1,
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 156,
+            "filename" : "./my_int.p4",
+            "line" : 148,
             "column" : 15,
             "source_fragment" : "hdr.sr[0].type==1"
           },
@@ -1145,8 +997,8 @@
       "name" : "egress",
       "id" : 1,
       "source_info" : {
-        "filename" : "./HULA.p4",
-        "line" : 171,
+        "filename" : "./my_int.p4",
+        "line" : 163,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
@@ -1179,8 +1031,8 @@
           "name" : "MyEgress.int_table",
           "id" : 4,
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 202,
+            "filename" : "./my_int.p4",
+            "line" : 187,
             "column" : 10,
             "source_fragment" : "int_table"
           },
@@ -1209,8 +1061,8 @@
           "name" : "MyEgress.spec_int_table",
           "id" : 5,
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 210,
+            "filename" : "./my_int.p4",
+            "line" : 195,
             "column" : 10,
             "source_fragment" : "spec_int_table"
           },
@@ -1265,8 +1117,8 @@
           "name" : "node_9",
           "id" : 2,
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 219,
+            "filename" : "./my_int.p4",
+            "line" : 204,
             "column" : 12,
             "source_fragment" : "hdr.int_option.isValid()"
           },
@@ -1288,8 +1140,8 @@
           "name" : "node_10",
           "id" : 3,
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 220,
+            "filename" : "./my_int.p4",
+            "line" : 205,
             "column" : 16,
             "source_fragment" : "hdr.int_option.type==0"
           },
@@ -1314,8 +1166,8 @@
           "name" : "node_11",
           "id" : 4,
           "source_info" : {
-            "filename" : "./HULA.p4",
-            "line" : 221,
+            "filename" : "./my_int.p4",
+            "line" : 206,
             "column" : 19,
             "source_fragment" : "standard_metadata.ingress_port == standard_metadata.egress_port"
           },
@@ -1388,7 +1240,7 @@
       ["standard_metadata", "recirculate_flag"]
     ]
   ],
-  "program" : "./HULA.p4",
+  "program" : "./my_int.p4",
   "__meta__" : {
     "version" : [2, 18],
     "compiler" : "https://github.com/p4lang/p4c"
