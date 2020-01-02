@@ -52,11 +52,13 @@ The control plane of simple switches.
 ### packet
 Include the packet sending and receiving scripts.
 #### ./send
+The packet sending scripts.
 #### ./send/send_int_probe.py
 Send int probes.
 #### ./send/send_udp.py
 Send data packets.
 #### ./receive
+The packet receiving and processing scripts.
 #### ./receive/parse.py
 Parse the packets.
 #### ./receive/receive.py
