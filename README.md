@@ -72,3 +72,29 @@ Not used.
 The source code of the controller.
 #### controller.py
 The controller will subscribe the Redis database and catches all the expire events. And use these information for failure localization.
+
+***
+
+## Requisite third parties
+P4 development enviornment: behavioral_model, p4c
+Database: Redis. And modify the configuration of redis to enable the unix socket and sub/pub function.
+
+## How to run
+First, enter the root direction of the system.
+```
+cd INT_DETECT
+```
+Second, start the topology and enter the CLI of Mininet.
+```
+sudo python topology/clos.py
+```
+Third, start the controller.
+```
+sudo python controller/controller.py
+```
+You can verify the controller by cut down some links by entering some commands in the CLI of mininet, like
+```
+link p1_l1 p1_t1 down
+```
+to make the link between switch p1_l1 and switch p1_t1 down.
+And then you can the localization result of the failure in the controller.
