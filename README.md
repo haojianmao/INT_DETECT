@@ -4,3 +4,10 @@ Network reliability becomes increasingly important in modern data center network
 
 ## System
 The system includes six modules: `bmv2_model`, `controller`, `flow_table`, `p4_source_code`, `packet`, `topology`.
+
+### bmv2_model
+The bmv2 target
+#### simple_switch
+The target used in the network is simple_switch.
+
+### controller
