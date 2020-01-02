@@ -76,7 +76,7 @@ The controller will subscribe the Redis database and catches all the expire even
 ***
 
 ## Requisite third parties
-P4 development enviornment: behavioral_model, p4c
+P4 development enviornment: behavioral_model, p4c  
 Database: Redis. And modify the configuration of redis to enable the unix socket and sub/pub function.
 
 ## How to run
